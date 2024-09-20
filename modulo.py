@@ -45,11 +45,47 @@ class Endereco:
     def obter_endereco(self):
         return f'{self.__bairro}, {self.__cidade}, {self.__uf}, CEP: {self.__cep}.'
     
+class Telefone:
+    def __init__(self, telefone_emergencial, celular, telefone_residencial):
+        self.__telefone_emergencial = telefone_emergencial
+        self.__celular              = celular
+        self.__telefone_residencial = telefone_residencial
+
+    @property
+    def telefone_emergencial(self):
+        return self.__telefone_emergencial
+
+    @telefone_emergencial.setter
+    def telefone_emergencial(self, telefone_emergencial):
+        self.__telefone_emergencial = telefone_emergencial
+
+    @property
+    def celular(self):
+        return self.__celular
+
+    @celular.setter
+    def celular(self, celular):
+        self.__celular = celular
+
+    @property
+    def telefone_residencial(self):
+        return self.__telefone_residencial
+
+    @telefone_residencial.setter
+    def telefone_residencial(self, telefone_residencial):
+        self.__telefone_residencial = telefone_residencial
+
+        #metodo de acao
+    def obter_telefone(self):
+        return f'{self.__telefone_emergencial}, {self.__celular}, {self.telefone_residencial}.'
+
+
 class Pessoa:
-    def __init__(self, nome, idade, endereco):
+    def __init__(self, nome, idade, endereco, telefone):
         self.__nome     = nome
         self.__idade    = idade
         self.__endereco = endereco #composicao
+        self.__telefone = telefone
 
     #metodo de acesso
     @property
@@ -76,7 +112,15 @@ class Pessoa:
     def endereco(self, endereco):
         self.__endereco = endereco
 
+    @property
+    def telefone(self):
+        return self.__telefone
+
+    @telefone.setter
+    def telefone(self, telefone):
+        self.__telefone = telefone
+
     #metodo de acao
     def obter_info_pessoal(self):
-        return f'{self.__nome}, {self.__idade} anos, mora em {self.__endereco.obter_endereco()}.' 
+        return f'{self.__nome}, {self.__idade} anos, mora em {self.__endereco.obter_endereco()}. Números para contato: {self.__telefone.obter_telefone()}' 
         #composicao #colocando o metodo de outra class dentro de um atributo de outra classe
